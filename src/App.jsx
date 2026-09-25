@@ -72,7 +72,7 @@ export default function App() {
             initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
             className="text-7xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 mb-6 tracking-tighter drop-shadow-2xl"
           >
-            VoiceFlow
+            Voxa
           </motion.h1>
           
           <motion.p 
@@ -86,7 +86,7 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-6"
           >
-              <a href="https://github.com/Rukutodo/voiceflow/releases/latest" className="group px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-2xl font-bold text-xl shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+              <a href="https://github.com/Rukutodo/Voxa/releases/latest" className="group px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-2xl font-bold text-xl shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
                 <svg className="w-7 h-7 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                 Download for Windows
               </a>
@@ -99,7 +99,7 @@ export default function App() {
         {/* How it Works Section */}
         <section className="py-32 px-6 w-full max-w-6xl">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeInUp} className="text-center mb-20">
-                <h2 className="text-5xl font-bold mb-6 text-white drop-shadow-lg">How VoiceFlow Works</h2>
+                <h2 className="text-5xl font-bold mb-6 text-white drop-shadow-lg">How Voxa Works</h2>
                 <p className="text-xl text-gray-400 max-w-2xl mx-auto">A seamless loop from your microphone to local AI processing, right back to your speakers.</p>
             </motion.div>
 
@@ -107,7 +107,7 @@ export default function App() {
                 <motion.div variants={fadeInUp} className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-8 rounded-3xl text-center relative shadow-2xl">
                     <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-indigo-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-2xl font-bold shadow-lg border-4 border-gray-950">1</div>
                     <h3 className="text-2xl font-bold mb-4 mt-4 text-indigo-300">Trigger</h3>
-                    <p className="text-gray-300">Press your custom global hotkey from anywhere in Windows to instantly summon the VoiceFlow overlay.</p>
+                    <p className="text-gray-300">Press your custom global hotkey from anywhere in Windows to instantly summon the Voxa overlay.</p>
                 </motion.div>
                 
                 <motion.div variants={fadeInUp} className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-8 rounded-3xl text-center relative shadow-2xl">
@@ -128,14 +128,14 @@ export default function App() {
         <section id="about" className="py-20 px-6 w-full max-w-6xl">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-20">
                 <h2 className="text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 drop-shadow-lg">Under the Hood</h2>
-                <p className="text-xl text-gray-300 max-w-2xl mx-auto drop-shadow">VoiceFlow isn't just another API wrapper. It is a completely native, bare-metal application.</p>
+                <p className="text-xl text-gray-300 max-w-2xl mx-auto drop-shadow">Voxa isn't just another API wrapper. It is a completely native, bare-metal application.</p>
             </motion.div>
             
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <motion.div variants={fadeInUp} className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-10 rounded-3xl hover:border-indigo-500/50 transition-colors duration-500 shadow-2xl">
                     <h3 className="text-3xl font-bold mb-4 text-white">Powered by Qwen TTS</h3>
                     <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                        Integrating state-of-the-art audio models, VoiceFlow understands context, nuance, and natural speech patterns better than traditional assistants. 
+                        Integrating state-of-the-art audio models, Voxa understands context, nuance, and natural speech patterns better than traditional assistants. 
                         Model inference happens locally via a Python sidecar—no cloud latency, no privacy risks.
                     </p>
                     <ul className="space-y-3 text-gray-300">
@@ -148,7 +148,7 @@ export default function App() {
                 <motion.div variants={fadeInUp} className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-10 rounded-3xl hover:border-cyan-500/50 transition-colors duration-500 shadow-2xl">
                     <h3 className="text-3xl font-bold mb-4 text-white">Built with Tauri & Rust 🦀</h3>
                     <p className="text-gray-300 text-lg leading-relaxed mb-6">
-                        Electron is heavy. VoiceFlow uses Tauri, leveraging your system's native webview wrapped in an incredibly fast Rust backend. This means it uses a fraction of the RAM while maintaining a fluid web UI.
+                        Electron is heavy. Voxa uses Tauri, leveraging your system's native webview wrapped in an incredibly fast Rust backend. This means it uses a fraction of the RAM while maintaining a fluid web UI.
                     </p>
                     <ul className="space-y-3 text-gray-300">
                         <li className="flex items-center gap-3"><span className="text-cyan-400 text-xl">✓</span> Minimal memory footprint</li>
@@ -161,7 +161,7 @@ export default function App() {
 
         {/* Feature Grid */}
         <section className="relative py-32 flex flex-col items-center justify-center p-6 text-center w-full max-w-6xl">
-            <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-5xl font-bold mb-16 text-white drop-shadow-xl">Why VoiceFlow?</motion.h2>
+            <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-5xl font-bold mb-16 text-white drop-shadow-xl">Why Voxa?</motion.h2>
             
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="w-full grid grid-cols-1 md:grid-cols-3 gap-8">
                 <motion.div variants={fadeInUp} whileHover={{ y: -10 }} className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-8 rounded-2xl text-left shadow-xl">
@@ -177,7 +177,7 @@ export default function App() {
                 <motion.div variants={fadeInUp} whileHover={{ y: -10 }} className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-8 rounded-2xl text-left shadow-xl">
                     <div className="text-4xl mb-4">🔌</div>
                     <h4 className="text-2xl font-bold mb-2">Fully Open Source</h4>
-                    <p className="text-gray-400">Don't like a feature? Change it. VoiceFlow is 100% open-source and hackable. Check out the code and contribute!</p>
+                    <p className="text-gray-400">Don't like a feature? Change it. Voxa is 100% open-source and hackable. Check out the code and contribute!</p>
                 </motion.div>
             </motion.div>
         </section>
@@ -186,7 +186,7 @@ export default function App() {
         <section className="py-20 px-6 w-full max-w-4xl text-left mb-20">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-16">
                 <h2 className="text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-lg">Getting Started</h2>
-                <p className="text-xl text-gray-400">Everything you need to get VoiceFlow running locally on your machine.</p>
+                <p className="text-xl text-gray-400">Everything you need to get Voxa running locally on your machine.</p>
             </motion.div>
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="space-y-8">
@@ -220,10 +220,10 @@ export default function App() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                         <div className="bg-gray-950/70 p-5 rounded-xl border border-gray-800 flex flex-col justify-between">
                             <div>
-                                <h4 className="font-bold text-indigo-300 mb-1">1. VoiceFlow Executable</h4>
+                                <h4 className="font-bold text-indigo-300 mb-1">1. Voxa Executable</h4>
                                 <p className="text-sm text-gray-400 mb-4">The main compiled binary and user interface.</p>
                             </div>
-                            <a href="https://github.com/Rukutodo/voiceflow/releases/latest" className="text-sm px-4 py-2 text-center bg-indigo-600 hover:bg-indigo-500 rounded font-semibold text-white inline-block transition-colors">Download v1.0.0</a>
+                            <a href="https://github.com/Rukutodo/Voxa/releases/latest" className="text-sm px-4 py-2 text-center bg-indigo-600 hover:bg-indigo-500 rounded font-semibold text-white inline-block transition-colors">Download v1.0.0</a>
                         </div>
                         <div className="bg-gray-950/70 p-5 rounded-xl border border-gray-800 flex flex-col justify-between">
                             <div>
@@ -251,21 +251,21 @@ export default function App() {
                             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-cyan-900/50 border border-cyan-500 flex items-center justify-center text-cyan-400 font-bold text-lg shadow-[0_0_15px_rgba(6,182,212,0.3)]">2</div>
                             <div>
                                 <h4 className="font-bold text-white text-lg mb-1">First Launch</h4>
-                                <p className="text-sm text-gray-400">Run <code className="bg-gray-950 text-pink-400 px-2 py-0.5 rounded text-xs font-mono border border-gray-800">voiceflow.exe</code>. On its first launch, it will unpack the Python sidecar and prepare your local <code>AppData</code> environment.</p>
+                                <p className="text-sm text-gray-400">Run <code className="bg-gray-950 text-pink-400 px-2 py-0.5 rounded text-xs font-mono border border-gray-800">Voxa.exe</code>. On its first launch, it will unpack the Python sidecar and prepare your local <code>AppData</code> environment.</p>
                             </div>
                         </div>
                         <div className="flex gap-5">
                             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-cyan-900/50 border border-cyan-500 flex items-center justify-center text-cyan-400 font-bold text-lg shadow-[0_0_15px_rgba(6,182,212,0.3)]">3</div>
                             <div>
                                 <h4 className="font-bold text-white text-lg mb-1">Configure Models</h4>
-                                <p className="text-sm text-gray-400">Move your downloaded Qwen TTS models into the <code className="bg-gray-950 text-green-400 px-2 py-0.5 rounded text-xs font-mono border border-gray-800">%APPDATA%\VoiceFlow\models</code> directory.</p>
+                                <p className="text-sm text-gray-400">Move your downloaded Qwen TTS models into the <code className="bg-gray-950 text-green-400 px-2 py-0.5 rounded text-xs font-mono border border-gray-800">%APPDATA%\Voxa\models</code> directory.</p>
                             </div>
                         </div>
                         <div className="flex gap-5">
                             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-cyan-900/50 border border-cyan-500 flex items-center justify-center text-cyan-400 font-bold text-lg shadow-[0_0_15px_rgba(6,182,212,0.3)]">4</div>
                             <div>
                                 <h4 className="font-bold text-white text-lg mb-1">Start Talking!</h4>
-                                <p className="text-sm text-gray-400">Use the global hotkey (default: <kbd className="bg-gray-800 px-2 py-1 rounded text-xs border border-gray-700 text-gray-300">Ctrl + Space</kbd>) to instantly bring up the VoiceFlow interface.</p>
+                                <p className="text-sm text-gray-400">Use the global hotkey (default: <kbd className="bg-gray-800 px-2 py-1 rounded text-xs border border-gray-700 text-gray-300">Ctrl + Space</kbd>) to instantly bring up the Voxa interface.</p>
                             </div>
                         </div>
                     </div>
@@ -277,7 +277,7 @@ export default function App() {
         {/* Footer */}
         <footer className="w-full bg-gray-950/90 backdrop-blur-md py-12 text-center border-t border-gray-800/80 mt-12 z-20">
             <p className="text-gray-500 mb-4 font-medium">Crafted with ❤️ and 🦀 by Rukutodo</p>
-            <a href="https://github.com/Rukutodo/voiceflow" target="_blank" className="text-indigo-400 hover:text-indigo-300 transition-colors font-semibold">
+            <a href="https://github.com/Rukutodo/Voxa" target="_blank" className="text-indigo-400 hover:text-indigo-300 transition-colors font-semibold">
                 View Repository on GitHub
             </a>
         </footer>
