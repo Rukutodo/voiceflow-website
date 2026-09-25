@@ -4,9 +4,9 @@ import './index.css';
 
 export default function App() {
   return (
-    <div className="relative w-full min-h-screen bg-gray-950 text-white overflow-hidden selection:bg-indigo-500">
+    <div className="relative w-full min-h-screen bg-gray-950 text-white font-sans selection:bg-indigo-500 overflow-x-hidden">
       
-      {/* Ghost Fibers WebGL Background */}
+      {/* Ghost Fibers Global Background */}
       <div className="fixed inset-0 z-0">
         <GhostFibers
           lineColor="#140E35"
@@ -37,34 +37,107 @@ export default function App() {
           fps={60}
           paused={false}
         />
+        {/* Darkening overlay for text readability while scrolling */}
+        <div className="absolute inset-0 bg-gray-950/70 z-10 pointer-events-none mix-blend-multiply"></div>
       </div>
 
-      <div className="absolute inset-0 bg-gray-950/60 z-0 pointer-events-none mix-blend-overlay"></div>
-
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen p-6 text-center">
+      {/* Scrolling Content Container */}
+      <div className="relative z-20 flex flex-col items-center w-full">
         
-        <div className="mb-6 p-4 rounded-full bg-indigo-900/30 border border-indigo-500/30 shadow-[0_0_40px_rgba(99,102,241,0.3)] backdrop-blur-md">
-            <svg className="w-16 h-16 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
-            </svg>
-        </div>
+        {/* Hero Section */}
+        <section className="flex flex-col items-center justify-center w-full min-h-screen p-6 text-center">
+          <div className="mb-8 p-5 rounded-full bg-indigo-900/30 border border-indigo-500/30 shadow-[0_0_40px_rgba(99,102,241,0.3)] backdrop-blur-md transition transform hover:scale-110 duration-500">
+              <svg className="w-20 h-20 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+              </svg>
+          </div>
 
-        <h1 className="text-7xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 mb-6 tracking-tighter drop-shadow-2xl">
-          VoiceFlow
-        </h1>
-        <p className="text-2xl md:text-3xl text-gray-300 max-w-2xl mb-12 font-light drop-shadow-md leading-relaxed">
-          The stunning, Rust-powered AI desktop assistant.
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-6">
-            <a href="https://github.com/Rukutodo/voiceflow/releases/latest" className="px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-2xl font-bold text-xl shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all transform hover:-translate-y-1">
-              Download for Windows
+          <h1 className="text-7xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 mb-6 tracking-tighter drop-shadow-2xl">
+            VoiceFlow
+          </h1>
+          <p className="text-2xl md:text-3xl text-gray-300 max-w-3xl mb-12 font-light drop-shadow-md leading-relaxed">
+            The stunning, Rust-powered AI desktop assistant. <br/><span className="text-indigo-400 font-semibold">Speak naturally. Process locally.</span>
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-6">
+              <a href="https://github.com/Rukutodo/voiceflow/releases/latest" className="group px-10 py-5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 rounded-2xl font-bold text-xl shadow-[0_0_30px_rgba(99,102,241,0.4)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                <svg className="w-7 h-7 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Download for Windows
+              </a>
+              <a href="#about" className="px-10 py-5 bg-gray-900/60 hover:bg-gray-800 border border-gray-700 rounded-2xl font-bold text-xl backdrop-blur-md transition-all flex items-center justify-center gap-3">
+                Learn More
+              </a>
+          </div>
+        </section>
+
+        {/* About / Under the Hood Section */}
+        <section id="about" className="py-32 px-6 w-full max-w-6xl">
+            <div className="text-center mb-20">
+                <h2 className="text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 drop-shadow-lg">Under the Hood</h2>
+                <p className="text-xl text-gray-300 max-w-2xl mx-auto drop-shadow">VoiceFlow isn't just another API wrapper. It is a completely native, bare-metal application designed for users who demand extreme performance.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                {/* Card 1 */}
+                <div className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-10 rounded-3xl hover:border-indigo-500/50 transition-colors duration-500 shadow-2xl">
+                    <h3 className="text-3xl font-bold mb-4 text-white">Powered by Qwen TTS</h3>
+                    <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                        Integrating state-of-the-art audio models, VoiceFlow understands context, nuance, and natural speech patterns better than traditional assistants. 
+                        Model inference happens locally via a Python sidecar—no cloud latency, no privacy risks.
+                    </p>
+                    <ul className="space-y-3 text-gray-300">
+                        <li className="flex items-center gap-3"><span className="text-indigo-400 text-xl">✓</span> Ultra-low latency voice synthesis</li>
+                        <li className="flex items-center gap-3"><span className="text-indigo-400 text-xl">✓</span> Highly accurate real-time transcription</li>
+                        <li className="flex items-center gap-3"><span className="text-indigo-400 text-xl">✓</span> Zero data sent to external servers</li>
+                    </ul>
+                </div>
+                
+                {/* Card 2 */}
+                <div className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-10 rounded-3xl hover:border-cyan-500/50 transition-colors duration-500 shadow-2xl">
+                    <h3 className="text-3xl font-bold mb-4 text-white">Built with Tauri & Rust 🦀</h3>
+                    <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                        Electron is heavy. VoiceFlow uses Tauri, leveraging your system's native webview wrapped in an incredibly fast Rust backend. This means it uses a fraction of the RAM while maintaining a fluid web UI.
+                    </p>
+                    <ul className="space-y-3 text-gray-300">
+                        <li className="flex items-center gap-3"><span className="text-cyan-400 text-xl">✓</span> Minimal memory footprint</li>
+                        <li className="flex items-center gap-3"><span className="text-cyan-400 text-xl">✓</span> Lightning-fast startup times</li>
+                        <li className="flex items-center gap-3"><span className="text-cyan-400 text-xl">✓</span> Deep OS integration & hotkeys</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        {/* Feature Grid */}
+        <section className="relative py-32 flex flex-col items-center justify-center p-6 text-center w-full max-w-6xl">
+            <h2 className="text-5xl font-bold mb-16 text-white drop-shadow-xl">Why VoiceFlow?</h2>
+            
+            <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-8 rounded-2xl text-left transform hover:-translate-y-2 transition duration-300 shadow-xl">
+                    <div className="text-4xl mb-4">🚀</div>
+                    <h4 className="text-2xl font-bold mb-2">Instant Response</h4>
+                    <p className="text-gray-400">By running inference locally via our optimized Rust pipeline, the time from speaking to action is nearly instantaneous.</p>
+                </div>
+                <div className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-8 rounded-2xl text-left transform hover:-translate-y-2 transition duration-300 shadow-xl">
+                    <div className="text-4xl mb-4">🎨</div>
+                    <h4 className="text-2xl font-bold mb-2">Sleek Overlay UI</h4>
+                    <p className="text-gray-400">A beautiful, non-intrusive UI that hovers over your desktop. Press a global hotkey, speak your mind, and get back to work.</p>
+                </div>
+                <div className="bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 p-8 rounded-2xl text-left transform hover:-translate-y-2 transition duration-300 shadow-xl">
+                    <div className="text-4xl mb-4">🔌</div>
+                    <h4 className="text-2xl font-bold mb-2">Fully Open Source</h4>
+                    <p className="text-gray-400">Don't like a feature? Change it. VoiceFlow is 100% open-source and hackable. Check out the code and contribute!</p>
+                </div>
+            </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="w-full bg-gray-950/80 backdrop-blur-md py-12 text-center border-t border-gray-800/50 mt-12 z-20">
+            <p className="text-gray-500 mb-4 font-medium">Crafted with ❤️ and 🦀 by Rukutodo</p>
+            <a href="https://github.com/Rukutodo/voiceflow" target="_blank" className="text-indigo-400 hover:text-indigo-300 transition-colors font-semibold">
+                View Repository on GitHub
             </a>
-            <a href="https://github.com/Rukutodo/voiceflow" target="_blank" className="px-10 py-5 bg-gray-900/60 hover:bg-gray-800 border border-gray-700 rounded-2xl font-bold text-xl backdrop-blur-md transition-all">
-              View Source
-            </a>
-        </div>
+        </footer>
+
       </div>
     </div>
   );
