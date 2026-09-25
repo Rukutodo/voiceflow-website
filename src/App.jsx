@@ -38,7 +38,7 @@ export default function App() {
           paused={false}
         />
         {/* Darkening overlay for text readability while scrolling */}
-        <div className="absolute inset-0 bg-gray-950/70 z-10 pointer-events-none mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gray-950/70 z-10 pointer-events-none "></div>
       </div>
 
       {/* Scrolling Content Container */}
@@ -142,3 +142,4 @@ export default function App() {
     </div>
   );
 }
+
