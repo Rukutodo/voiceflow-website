@@ -4,23 +4,28 @@ import './index.css';
 
 const AnimatedWaveform = () => {
   return (
-    <div className="flex items-center justify-center gap-1.5 h-12">
-      {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-        <motion.div
-          key={i}
-          className="w-1.5 bg-indigo-400 rounded-none"
-          animate={{
-            height: ["16%", "100%", "16%"],
-          }}
-          transition={{
-            duration: 0.8 + Math.random() * 0.4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.1,
-          }}
-          style={{ height: "16%" }}
-        />
-      ))}
+    <div className="flex items-center justify-center gap-3">
+      <svg className="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+      </svg>
+      <div className="flex items-center gap-1.5 h-7">
+        {[1, 2, 3, 4, 5, 6, 7].map((i) => (
+          <motion.div
+            key={i}
+            className="w-1.5 bg-indigo-400 rounded-full"
+            animate={{
+              height: ["20%", "100%", "20%"],
+            }}
+            transition={{
+              duration: 0.8 + Math.random() * 0.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.1,
+            }}
+            style={{ height: "20%" }}
+          />
+        ))}
+      </div>
     </div>
   );
 };
@@ -117,9 +122,9 @@ export default function App() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.5, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} 
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="mb-8 p-1 rounded-none bg-gradient-to-b from-white/20 to-white/5 shadow-[0_0_30px_rgba(99,102,241,0.2)] backdrop-blur-md border border-white/10"
+              className="mb-8 p-1 rounded-2xl bg-gradient-to-b from-white/20 to-white/5 shadow-[0_0_30px_rgba(99,102,241,0.2)] backdrop-blur-md border border-white/10"
             >
-              <div className="bg-[#0a0a0a]/90 rounded-none p-6 flex items-center justify-center min-w-[100px] h-[80px]">
+              <div className="bg-[#0a0a0a]/90 rounded-xl px-6 py-4 flex items-center justify-center min-w-[120px] h-[64px]">
                 <AnimatedWaveform />
               </div>
             </motion.div>
