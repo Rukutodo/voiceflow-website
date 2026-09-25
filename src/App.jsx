@@ -1,31 +1,97 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './index.css';
 
-const AnimatedWaveform = () => {
+const VoiceOverlayWidget = () => {
+  const [isActive, setIsActive] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIsActive((prev) => !prev);
+    }, 3800);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <div className="flex items-center justify-center gap-3">
-      <svg className="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
-      </svg>
-      <div className="flex items-center gap-1.5 h-7">
-        {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-          <motion.div
-            key={i}
-            className="w-1.5 bg-indigo-400 rounded-full"
-            animate={{
-              height: ["20%", "100%", "20%"],
-            }}
-            transition={{
-              duration: 0.8 + Math.random() * 0.4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.1,
-            }}
-            style={{ height: "20%" }}
-          />
-        ))}
-      </div>
+    <div className="flex flex-col items-center gap-2 mb-8">
+      <motion.div 
+        layout
+        onClick={() => setIsActive(!isActive)}
+        title="Click to toggle Idle / Active state"
+        className="cursor-pointer select-none p-[4px] rounded-[24px] bg-[#22242b] border border-[#353842] shadow-[0_16px_40px_rgba(0,0,0,0.7),inset_0_1px_1px_rgba(255,255,255,0.15)] hover:border-[#4a4e5c] transition-colors"
+        transition={{ type: "spring", stiffness: 350, damping: 28 }}
+      >
+        <motion.div 
+          layout
+          className="bg-[#121316] rounded-[20px] px-5 py-3.5 flex items-center justify-center gap-3.5 min-h-[58px]"
+          transition={{ type: "spring", stiffness: 350, damping: 28 }}
+        >
+          {/* Microphone Icon */}
+          <motion.div 
+            layout
+            animate={isActive ? { scale: [1, 1.08, 1] } : { scale: 1 }}
+            transition={{ duration: 1.6, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
+            className="flex items-center justify-center"
+          >
+            <svg 
+              className={`w-6 h-6 transition-colors duration-300 ${isActive ? 'text-[#7d8cf7] drop-shadow-[0_0_10px_rgba(125,140,247,0.7)]' : 'text-zinc-500'}`} 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+            </svg>
+          </motion.div>
+
+          {/* Waveform Equalizer (Only visible in Active state) */}
+          <AnimatePresence mode="popLayout">
+            {isActive && (
+              <motion.div 
+                key="waveform"
+                initial={{ opacity: 0, width: 0, scale: 0.8 }}
+                animate={{ opacity: 1, width: "auto", scale: 1 }}
+                exit={{ opacity: 0, width: 0, scale: 0.8 }}
+                transition={{ type: "spring", stiffness: 360, damping: 26 }}
+                className="flex items-center gap-[5px] h-7 overflow-hidden pl-1"
+              >
+                {[
+                  { min: "28%", max: "100%", duration: 0.7, delay: 0.0 },
+                  { min: "20%", max: "65%", duration: 0.85, delay: 0.15 },
+                  { min: "35%", max: "95%", duration: 0.65, delay: 0.05 },
+                  { min: "16%", max: "45%", duration: 0.85, delay: 0.2 },
+                  { min: "16%", max: "45%", duration: 0.8, delay: 0.1 },
+                  { min: "28%", max: "92%", duration: 0.75, delay: 0.25 },
+                  { min: "16%", max: "40%", duration: 0.7, delay: 0.05 },
+                ].map((bar, i) => (
+                  <motion.div
+                    key={i}
+                    className="w-[5px] bg-[#7d8cf7] rounded-full shadow-[0_0_10px_rgba(125,140,247,0.5)]"
+                    animate={{
+                      height: [bar.min, bar.max, bar.min],
+                    }}
+                    transition={{
+                      duration: bar.duration,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: bar.delay,
+                    }}
+                    style={{ height: bar.min }}
+                  />
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </motion.div>
+
+      {/* State label badge */}
+      <motion.div 
+        layout
+        className="flex items-center gap-1.5 text-[11px] font-mono tracking-wider text-zinc-400 uppercase"
+      >
+        <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#7d8cf7] animate-ping' : 'bg-zinc-600'}`} />
+        <span>{isActive ? 'Listening (Active)' : 'Standby (Idle)'}</span>
+      </motion.div>
     </div>
   );
 };
@@ -130,13 +196,11 @@ export default function App() {
           <section className="flex flex-col items-center justify-center w-full px-6 py-20 text-center max-w-4xl mx-auto">
             
             <motion.div 
-              initial={{ opacity: 0, scale: 0.5, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} 
+              initial={{ opacity: 0, scale: 0.8, y: -10 }} 
+              animate={{ opacity: 1, scale: 1, y: 0 }} 
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="mb-8 p-1 rounded-2xl bg-gradient-to-b from-white/20 to-white/5 shadow-[0_0_30px_rgba(99,102,241,0.2)] backdrop-blur-md border border-white/10"
             >
-              <div className="bg-[#0a0a0a]/90 rounded-xl px-6 py-4 flex items-center justify-center min-w-[120px] h-[64px]">
-                <AnimatedWaveform />
-              </div>
+              <VoiceOverlayWidget />
             </motion.div>
 
             <motion.h1 
