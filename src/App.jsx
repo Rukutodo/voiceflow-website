@@ -194,32 +194,33 @@ export default function App() {
               <VoiceOverlayWidget />
             </motion.div>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 15 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 0.6, delay: 0.05 }}
-              className="mt-6 mb-2 inline-flex items-center gap-2 px-3 py-1 bg-white/[0.08] border border-white/20 text-xs font-mono uppercase tracking-widest text-zinc-300"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-              Voxa Voice Engine
-            </motion.div>
-
             <motion.h1 
-              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 drop-shadow-md leading-[1.15]"
+              initial={{ opacity: 0, y: 30, filter: "blur(10px)" }} 
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} 
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-tight text-white mt-8 mb-4 drop-shadow-lg leading-none"
+            >
+              Voxa
+            </motion.h1>
+
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight text-zinc-200 mb-6 drop-shadow-md leading-[1.2]"
             >
               <span className="inline-block whitespace-nowrap">Local-first</span>{' '}
               <span className="inline-block whitespace-nowrap">voice typing.</span>{' '}
               <br className="hidden sm:inline" />
               <span className="inline-block whitespace-nowrap">Built for</span>{' '}
               <span className="inline-block whitespace-nowrap">Windows.</span>
-            </motion.h1>
+            </motion.h2>
             
             <motion.p 
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
-              className="text-lg md:text-xl text-gray-200 max-w-2xl mb-12 font-medium leading-relaxed drop-shadow-sm"
+              className="text-lg md:text-xl text-gray-300 max-w-2xl mb-12 font-medium leading-relaxed drop-shadow-sm"
             >
-              Voxa is the local-first voice engine for Windows. Speak naturally. Type at the speed of thought.
+              Speak naturally. Type at the speed of thought.
             </motion.p>
             
             <motion.div 
