@@ -8,7 +8,7 @@ const AnimatedWaveform = () => {
       {[1, 2, 3, 4, 5, 6, 7].map((i) => (
         <motion.div
           key={i}
-          className="w-1.5 bg-indigo-400 rounded-full"
+          className="w-1.5 bg-indigo-400 rounded-none"
           animate={{
             height: ["16%", "100%", "16%"],
           }}
@@ -86,14 +86,14 @@ export default function App() {
 
       <div className="relative z-20 h-full overflow-y-auto overflow-x-hidden">
         {/* Top Nav */}
-        <nav className="fixed top-0 w-full flex justify-between items-center px-8 py-5 bg-black/30 backdrop-blur-2xl border-b border-white/10 z-50">
+        <nav className="fixed top-0 w-full flex justify-between items-center px-8 py-5 bg-black/40 backdrop-blur-2xl border-b border-white/10 z-50">
           <motion.div 
             initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2.5"
           >
             <motion.div 
               whileHover={{ rotate: 180 }} transition={{ duration: 0.4, ease: "backOut" }}
-              className="w-6 h-6 rounded-md bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)] cursor-pointer"
+              className="w-6 h-6 rounded-none bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)] cursor-pointer"
             >
               <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
             </motion.div>
@@ -117,9 +117,9 @@ export default function App() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.5, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} 
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="mb-8 p-1 rounded-2xl bg-gradient-to-b from-white/20 to-white/5 shadow-[0_0_30px_rgba(99,102,241,0.2)] backdrop-blur-md"
+              className="mb-8 p-1 rounded-none bg-gradient-to-b from-white/20 to-white/5 shadow-[0_0_30px_rgba(99,102,241,0.2)] backdrop-blur-md border border-white/10"
             >
-              <div className="bg-[#0a0a0a]/90 rounded-[14px] p-6 flex items-center justify-center min-w-[100px] h-[80px]">
+              <div className="bg-[#0a0a0a]/90 rounded-none p-6 flex items-center justify-center min-w-[100px] h-[80px]">
                 <AnimatedWaveform />
               </div>
             </motion.div>
@@ -143,9 +143,9 @@ export default function App() {
               className="flex flex-col sm:flex-row gap-4 w-full justify-center"
             >
                 <motion.a 
-                  whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
                   href="https://github.com/Rukutodo/Voxa/releases/latest" 
-                  className="group px-7 py-3.5 bg-white text-black hover:bg-gray-100 rounded-full font-bold text-sm transition-colors shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2"
+                  className="group px-7 py-3.5 bg-white text-black hover:bg-gray-100 rounded-none font-bold text-sm transition-colors shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center gap-2 border border-white"
                 >
                   Download v1.0.0
                   <motion.svg 
@@ -157,9 +157,9 @@ export default function App() {
                   </motion.svg>
                 </motion.a>
                 <motion.a 
-                  whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.15)" }} whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.03, backgroundColor: "rgba(255,255,255,0.15)" }} whileTap={{ scale: 0.97 }}
                   href="#about" 
-                  className="px-7 py-3.5 bg-white/10 backdrop-blur-xl border border-white/20 text-white rounded-full font-medium text-sm transition-colors flex items-center justify-center shadow-lg"
+                  className="px-7 py-3.5 bg-white/10 backdrop-blur-xl border border-white/20 text-white rounded-none font-medium text-sm transition-colors flex items-center justify-center shadow-lg"
                 >
                   Explore Features
                 </motion.a>
@@ -169,10 +169,10 @@ export default function App() {
           {/* Feature Cards Section */}
           <section className="py-20 px-6 w-full max-w-6xl mx-auto">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.2 } }} className="group p-px rounded-2xl bg-gradient-to-b from-white/20 to-transparent hover:from-indigo-500/50 transition-all duration-300 shadow-xl">
-                    <div className="bg-[#050505]/60 backdrop-blur-2xl h-full p-8 rounded-2xl relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/30 rounded-full blur-[50px] group-hover:bg-indigo-500/50 transition-all duration-500 mix-blend-screen" />
-                      <div className="w-10 h-10 rounded-lg bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(99,102,241,0.4)]">
+                  <motion.div variants={fadeInUp} whileHover={{ y: -6, transition: { duration: 0.2 } }} className="group p-px rounded-none bg-gradient-to-b from-white/20 to-transparent hover:from-indigo-500/50 transition-all duration-300 shadow-xl border border-white/10">
+                    <div className="bg-[#050505]/60 backdrop-blur-2xl h-full p-8 rounded-none relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/30 blur-[50px] group-hover:bg-indigo-500/50 transition-all duration-500 mix-blend-screen" />
+                      <div className="w-10 h-10 rounded-none bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(99,102,241,0.4)]">
                         <span className="text-indigo-400 text-lg drop-shadow-md">⚡</span>
                       </div>
                       <h3 className="text-xl font-bold mb-3 text-white relative z-10">Instant Response</h3>
@@ -180,10 +180,10 @@ export default function App() {
                     </div>
                   </motion.div>
                   
-                  <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.2 } }} className="group p-px rounded-2xl bg-gradient-to-b from-white/20 to-transparent hover:from-blue-500/50 transition-all duration-300 shadow-xl">
-                    <div className="bg-[#050505]/60 backdrop-blur-2xl h-full p-8 rounded-2xl relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/30 rounded-full blur-[50px] group-hover:bg-blue-500/50 transition-all duration-500 mix-blend-screen" />
-                      <div className="w-10 h-10 rounded-lg bg-blue-500/20 border border-blue-500/40 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                  <motion.div variants={fadeInUp} whileHover={{ y: -6, transition: { duration: 0.2 } }} className="group p-px rounded-none bg-gradient-to-b from-white/20 to-transparent hover:from-blue-500/50 transition-all duration-300 shadow-xl border border-white/10">
+                    <div className="bg-[#050505]/60 backdrop-blur-2xl h-full p-8 rounded-none relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/30 blur-[50px] group-hover:bg-blue-500/50 transition-all duration-500 mix-blend-screen" />
+                      <div className="w-10 h-10 rounded-none bg-blue-500/20 border border-blue-500/40 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
                         <span className="text-blue-400 text-lg drop-shadow-md">🎨</span>
                       </div>
                       <h3 className="text-xl font-bold mb-3 text-white relative z-10">Sleek Overlay UI</h3>
@@ -191,10 +191,10 @@ export default function App() {
                     </div>
                   </motion.div>
                   
-                  <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.2 } }} className="group p-px rounded-2xl bg-gradient-to-b from-white/20 to-transparent hover:from-purple-500/50 transition-all duration-300 shadow-xl">
-                    <div className="bg-[#050505]/60 backdrop-blur-2xl h-full p-8 rounded-2xl relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/30 rounded-full blur-[50px] group-hover:bg-purple-500/50 transition-all duration-500 mix-blend-screen" />
-                      <div className="w-10 h-10 rounded-lg bg-purple-500/20 border border-purple-500/40 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                  <motion.div variants={fadeInUp} whileHover={{ y: -6, transition: { duration: 0.2 } }} className="group p-px rounded-none bg-gradient-to-b from-white/20 to-transparent hover:from-purple-500/50 transition-all duration-300 shadow-xl border border-white/10">
+                    <div className="bg-[#050505]/60 backdrop-blur-2xl h-full p-8 rounded-none relative overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/30 blur-[50px] group-hover:bg-purple-500/50 transition-all duration-500 mix-blend-screen" />
+                      <div className="w-10 h-10 rounded-none bg-purple-500/20 border border-purple-500/40 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
                         <span className="text-purple-400 text-lg drop-shadow-md">🔒</span>
                       </div>
                       <h3 className="text-xl font-bold mb-3 text-white relative z-10">100% Privacy</h3>
@@ -208,7 +208,7 @@ export default function App() {
           <section id="about" className="py-24 px-6 w-full max-w-6xl mx-auto">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   
-                  <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-3xl bg-[#050505]/40 backdrop-blur-2xl border border-white/20 p-10 group shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                  <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-none bg-[#050505]/40 backdrop-blur-2xl border border-white/20 p-10 group shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
                       <motion.div 
                         animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }} 
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
@@ -221,15 +221,15 @@ export default function App() {
                       </p>
                       <ul className="space-y-4 text-sm font-bold text-white relative z-10">
                           <li className="flex items-center gap-3">
-                            <div className="w-2.5 h-2.5 rounded-full bg-indigo-400 shadow-[0_0_12px_rgba(99,102,241,1)]" /> Ultra-low latency voice synthesis
+                            <div className="w-2 h-2 rounded-none bg-indigo-400 shadow-[0_0_12px_rgba(99,102,241,1)]" /> Ultra-low latency voice synthesis
                           </li>
                           <li className="flex items-center gap-3">
-                            <div className="w-2.5 h-2.5 rounded-full bg-indigo-400 shadow-[0_0_12px_rgba(99,102,241,1)]" /> Highly accurate real-time transcription
+                            <div className="w-2 h-2 rounded-none bg-indigo-400 shadow-[0_0_12px_rgba(99,102,241,1)]" /> Highly accurate real-time transcription
                           </li>
                       </ul>
                   </motion.div>
 
-                  <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-3xl bg-[#050505]/40 backdrop-blur-2xl border border-white/20 p-10 group shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+                  <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-none bg-[#050505]/40 backdrop-blur-2xl border border-white/20 p-10 group shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
                       <motion.div 
                         animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }} 
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
@@ -241,10 +241,10 @@ export default function App() {
                       </p>
                       <ul className="space-y-4 text-sm font-bold text-white relative z-10">
                           <li className="flex items-center gap-3">
-                            <div className="w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_12px_rgba(59,130,246,1)]" /> Minimal memory footprint
+                            <div className="w-2 h-2 rounded-none bg-blue-400 shadow-[0_0_12px_rgba(59,130,246,1)]" /> Minimal memory footprint
                           </li>
                           <li className="flex items-center gap-3">
-                            <div className="w-2.5 h-2.5 rounded-full bg-blue-400 shadow-[0_0_12px_rgba(59,130,246,1)]" /> Deep OS integration & hotkeys
+                            <div className="w-2 h-2 rounded-none bg-blue-400 shadow-[0_0_12px_rgba(59,130,246,1)]" /> Deep OS integration & hotkeys
                           </li>
                       </ul>
                   </motion.div>
@@ -261,7 +261,7 @@ export default function App() {
 
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="space-y-6 relative z-10">
                   
-                  <motion.div variants={fadeInUp} className="bg-[#050505]/50 backdrop-blur-2xl border border-white/20 rounded-2xl p-8 hover:border-white/30 transition-colors duration-300 shadow-2xl">
+                  <motion.div variants={fadeInUp} className="bg-[#050505]/50 backdrop-blur-2xl border border-white/20 rounded-none p-8 hover:border-white/30 transition-colors duration-300 shadow-2xl">
                       <h3 className="text-lg font-bold mb-6 text-white border-b border-white/20 pb-4">1. Required Dependencies</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                           <div>
@@ -283,16 +283,16 @@ export default function App() {
                       </div>
                   </motion.div>
 
-                  <motion.div variants={fadeInUp} className="bg-[#050505]/50 backdrop-blur-2xl border border-white/20 rounded-2xl p-8 hover:border-white/30 transition-colors duration-300 shadow-2xl">
+                  <motion.div variants={fadeInUp} className="bg-[#050505]/50 backdrop-blur-2xl border border-white/20 rounded-none p-8 hover:border-white/30 transition-colors duration-300 shadow-2xl">
                       <h3 className="text-lg font-bold mb-6 text-white border-b border-white/20 pb-4">2. Setup Models</h3>
                       <div className="flex flex-col gap-4">
                           <p className="text-sm text-gray-200 font-medium">Download the model weights directly using the HuggingFace CLI.</p>
                           <motion.div whileHover={{ scale: 1.01 }} className="relative group mt-1">
-                            <code className="block bg-black/90 text-green-400 px-5 py-4 rounded-xl text-sm font-mono border border-white/20 overflow-x-auto select-all whitespace-nowrap shadow-inner">
+                            <code className="block bg-black/90 text-green-400 px-5 py-4 rounded-none text-sm font-mono border border-white/20 overflow-x-auto select-all whitespace-nowrap shadow-inner">
                               huggingface-cli download Qwen/Qwen-Audio --local-dir ./models
                             </code>
                           </motion.div>
-                          <p className="text-sm text-gray-300 mt-3 font-medium">Move these downloaded models into <code className="bg-white/10 border border-white/30 px-2 py-1 rounded font-mono text-white">%APPDATA%\Voxa\models</code>.</p>
+                          <p className="text-sm text-gray-300 mt-3 font-medium">Move these downloaded models into <code className="bg-white/10 border border-white/30 px-2 py-1 rounded-none font-mono text-white">%APPDATA%\Voxa\models</code>.</p>
                       </div>
                   </motion.div>
                   
@@ -302,7 +302,7 @@ export default function App() {
           {/* Footer */}
           <footer className="w-full max-w-5xl mx-auto pt-12 pb-8 px-6 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4 relative z-10">
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 rounded bg-white/20 flex items-center justify-center border border-white/30">
+                <div className="w-5 h-5 rounded-none bg-white/20 flex items-center justify-center border border-white/30">
                   <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
                 </div>
                 <span className="font-bold text-white">Voxa</span>
