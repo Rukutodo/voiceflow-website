@@ -196,9 +196,13 @@ export default function App() {
 
             <motion.h1 
               initial={{ opacity: 0, y: 30, filter: "blur(10px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 drop-shadow-md"
+              className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 drop-shadow-md leading-[1.15]"
             >
-              Local-first voice typing. <br/> Built for Windows.
+              <span className="inline-block whitespace-nowrap">Local-first</span>{' '}
+              <span className="inline-block whitespace-nowrap">voice typing.</span>{' '}
+              <br className="hidden sm:inline" />
+              <span className="inline-block whitespace-nowrap">Built for</span>{' '}
+              <span className="inline-block whitespace-nowrap">Windows.</span>
             </motion.h1>
             
             <motion.p 
