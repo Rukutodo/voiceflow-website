@@ -2,6 +2,29 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './index.css';
 
+const AnimatedWaveform = () => {
+  return (
+    <div className="flex items-center justify-center gap-1.5 h-12">
+      {[1, 2, 3, 4, 5, 6, 7].map((i) => (
+        <motion.div
+          key={i}
+          className="w-1.5 bg-indigo-400 rounded-full"
+          animate={{
+            height: ["16%", "100%", "16%"],
+          }}
+          transition={{
+            duration: 0.8 + Math.random() * 0.4,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.1,
+          }}
+          style={{ height: "16%" }}
+        />
+      ))}
+    </div>
+  );
+};
+
 export default function App() {
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
@@ -62,19 +85,16 @@ export default function App() {
         
         {/* Hero Section */}
         <section className="flex flex-col items-center justify-center w-full px-6 py-20 text-center max-w-4xl mx-auto">
+          
+          {/* Animated Waveform replacing the static icon */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.5, rotate: -15 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} 
+            initial={{ opacity: 0, scale: 0.5, y: -10 }} animate={{ opacity: 1, scale: 1, y: 0 }} 
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="mb-8 p-0.5 rounded-2xl bg-gradient-to-b from-white/10 to-transparent"
+            className="mb-8 p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent"
           >
-            <motion.div 
-              animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="bg-[#0a0a0a] rounded-2xl p-4 shadow-2xl"
-            >
-              <svg className="w-10 h-10 text-indigo-400 drop-shadow-[0_0_15px_rgba(99,102,241,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
-              </svg>
-            </motion.div>
+            <div className="bg-[#0a0a0a] rounded-[14px] p-6 shadow-2xl flex items-center justify-center min-w-[100px] h-[80px]">
+              <AnimatedWaveform />
+            </div>
           </motion.div>
 
           <motion.h1 
