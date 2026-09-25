@@ -209,7 +209,7 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
               className="text-lg md:text-xl text-gray-200 max-w-2xl mb-12 font-medium leading-relaxed drop-shadow-sm"
             >
-              The ultimate Rust-powered AI desktop assistant. Speak naturally and process everything entirely on your machine.
+              The local-first voice engine for Windows. Speak naturally. Type at the speed of thought.
             </motion.p>
             
             <motion.div 
