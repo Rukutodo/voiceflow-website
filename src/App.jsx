@@ -83,15 +83,6 @@ const VoiceOverlayWidget = () => {
           </AnimatePresence>
         </motion.div>
       </motion.div>
-
-      {/* State label badge */}
-      <motion.div 
-        layout
-        className="flex items-center gap-1.5 text-[11px] font-mono tracking-wider text-zinc-400 uppercase"
-      >
-        <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#7d8cf7] animate-ping' : 'bg-zinc-600'}`} />
-        <span>{isActive ? 'Listening (Active)' : 'Standby (Idle)'}</span>
-      </motion.div>
     </div>
   );
 };
