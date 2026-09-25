@@ -47,46 +47,56 @@ export default function App() {
   return (
     <div className="relative w-full min-h-screen bg-[#000000] text-[#ededed] font-sans selection:bg-indigo-500/30 selection:text-white overflow-hidden antialiased">
       
-      {/* Rich Animated Aurora Background */}
+      {/* Rich Animated White & Grey Ethereal Background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
         {/* Deep background mesh */}
-        <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dzl9yxixg/image/upload/v1714558602/grid_yq1m2v.svg')] opacity-20" />
+        <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dzl9yxixg/image/upload/v1714558602/grid_yq1m2v.svg')] opacity-25" />
         
-        {/* Floating Orb 1 - Indigo */}
+        {/* Floating Orb 1 - Luminous Soft White */}
         <motion.div 
           animate={{ 
-            x: [0, 100, -50, 0], 
-            y: [0, -100, 50, 0],
-            scale: [1, 1.2, 0.8, 1],
+            x: [0, 90, -40, 0], 
+            y: [0, -90, 40, 0],
+            scale: [1, 1.25, 0.85, 1],
           }} 
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-10%] left-[-10%] w-[60vw] h-[60vh] rounded-full bg-indigo-600/60 blur-[100px] mix-blend-screen" 
+          transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[-10%] left-[-10%] w-[65vw] h-[65vh] rounded-full bg-white/20 blur-[130px] mix-blend-screen" 
         />
         
-        {/* Floating Orb 2 - Blue */}
+        {/* Floating Orb 2 - Cool Slate Grey */}
         <motion.div 
           animate={{ 
-            x: [0, -150, 100, 0], 
-            y: [0, 150, -50, 0],
+            x: [0, -120, 80, 0], 
+            y: [0, 120, -40, 0],
             scale: [1, 1.3, 0.9, 1],
           }} 
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-10%] right-[-10%] w-[70vw] h-[70vh] rounded-full bg-blue-500/50 blur-[100px] mix-blend-screen" 
+          transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[-10%] right-[-10%] w-[70vw] h-[70vh] rounded-full bg-zinc-400/25 blur-[140px] mix-blend-screen" 
         />
 
-        {/* Floating Orb 3 - Purple center */}
+        {/* Floating Orb 3 - Radiant Silver Center Mist */}
         <motion.div 
           animate={{ 
-            x: [-50, 50, -50], 
-            y: [-50, 50, -50],
-            scale: [0.8, 1.2, 0.8],
+            x: [-60, 60, -60], 
+            y: [-40, 40, -40],
+            scale: [0.9, 1.3, 0.9],
           }} 
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[20%] left-[20%] w-[50vw] h-[50vh] rounded-full bg-purple-500/40 blur-[100px] mix-blend-screen" 
+          transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[20%] left-[25%] w-[55vw] h-[55vh] rounded-full bg-gray-200/25 blur-[120px] mix-blend-screen" 
+        />
+
+        {/* Floating Orb 4 - Ambient Top Center Spotlight */}
+        <motion.div 
+          animate={{ 
+            opacity: [0.2, 0.35, 0.2],
+            scale: [1, 1.15, 1],
+          }} 
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-20%] left-[20%] w-[60vw] h-[40vh] rounded-full bg-zinc-300/20 blur-[110px] mix-blend-screen" 
         />
         
         {/* Noise overlay for texture */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] mix-blend-overlay" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.12] mix-blend-overlay" />
       </div>
 
       <div className="relative z-20 h-full overflow-y-auto overflow-x-hidden">
@@ -196,11 +206,11 @@ export default function App() {
                     </div>
                   </motion.div>
                   
-                  <motion.div variants={fadeInUp} whileHover={{ y: -6, transition: { duration: 0.2 } }} className="group p-px rounded-none bg-gradient-to-b from-white/20 to-transparent hover:from-purple-500/50 transition-all duration-300 shadow-xl border border-white/10">
+                  <motion.div variants={fadeInUp} whileHover={{ y: -6, transition: { duration: 0.2 } }} className="group p-px rounded-none bg-gradient-to-b from-white/20 to-transparent hover:from-white/40 transition-all duration-300 shadow-xl border border-white/10">
                     <div className="bg-[#050505]/60 backdrop-blur-2xl h-full p-8 rounded-none relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/30 blur-[50px] group-hover:bg-purple-500/50 transition-all duration-500 mix-blend-screen" />
-                      <div className="w-10 h-10 rounded-none bg-purple-500/20 border border-purple-500/40 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(168,85,247,0.4)]">
-                        <span className="text-purple-400 text-lg drop-shadow-md">🔒</span>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/15 blur-[50px] group-hover:bg-white/25 transition-all duration-500 mix-blend-screen" />
+                      <div className="w-10 h-10 rounded-none bg-white/10 border border-white/20 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                        <span className="text-white text-lg drop-shadow-md">🔒</span>
                       </div>
                       <h3 className="text-xl font-bold mb-3 text-white relative z-10">100% Privacy</h3>
                       <p className="text-gray-200 leading-relaxed text-sm relative z-10">Zero data sent to external servers. Your voice never leaves your machine. Fully open-source and auditable.</p>
