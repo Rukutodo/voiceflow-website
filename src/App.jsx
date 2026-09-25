@@ -19,22 +19,42 @@ export default function App() {
   return (
     <div className="relative w-full min-h-screen bg-[#050505] text-[#ededed] font-sans selection:bg-indigo-500/30 selection:text-white overflow-x-hidden antialiased">
       
-      {/* Premium Background: Subtle Radial Glow + Dot Pattern */}
+      {/* Premium Background: Subtle Radial Glow + Dot Pattern with Infinite Animations */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/20 blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-900/10 blur-[120px]" />
+        <motion.div 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }} 
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/20 blur-[120px]" 
+        />
+        <motion.div 
+          animate={{ scale: [1, 1.5, 1], opacity: [0.1, 0.3, 0.1] }} 
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-900/10 blur-[120px]" 
+        />
         <div className="absolute inset-0 bg-[url('https://res.cloudinary.com/dzl9yxixg/image/upload/v1714558602/grid_yq1m2v.svg')] opacity-[0.03]" />
       </div>
 
       {/* Top Nav */}
       <nav className="fixed top-0 w-full flex justify-between items-center px-8 py-5 bg-[#050505]/70 backdrop-blur-xl border-b border-white/5 z-50">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-md bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
+        <motion.div 
+          initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
+          className="flex items-center gap-2"
+        >
+          <motion.div 
+            whileHover={{ rotate: 180 }} transition={{ duration: 0.4, ease: "backOut" }}
+            className="w-6 h-6 rounded-md bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-lg shadow-indigo-500/20 cursor-pointer"
+          >
             <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-          </div>
+          </motion.div>
           <span className="font-semibold tracking-wide text-lg text-white">Voxa</span>
-        </div>
-        <a href="https://github.com/Rukutodo/Voxa" target="_blank" rel="noreferrer" className="text-sm font-medium text-gray-400 hover:text-white transition-colors">GitHub</a>
+        </motion.div>
+        <motion.a 
+          initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
+          href="https://github.com/Rukutodo/Voxa" target="_blank" rel="noreferrer" 
+          className="text-sm font-medium text-gray-400 hover:text-white transition-colors"
+        >
+          GitHub
+        </motion.a>
       </nav>
 
       {/* Main Content */}
@@ -43,74 +63,95 @@ export default function App() {
         {/* Hero Section */}
         <section className="flex flex-col items-center justify-center w-full px-6 py-20 text-center max-w-4xl mx-auto">
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, ease: "easeOut" }}
+            initial={{ opacity: 0, scale: 0.5, rotate: -15 }} animate={{ opacity: 1, scale: 1, rotate: 0 }} 
+            transition={{ type: "spring", stiffness: 200, damping: 20 }}
             className="mb-8 p-0.5 rounded-2xl bg-gradient-to-b from-white/10 to-transparent"
           >
-            <div className="bg-[#0a0a0a] rounded-2xl p-4 shadow-2xl">
-              <svg className="w-10 h-10 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <motion.div 
+              animate={{ y: [0, -8, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="bg-[#0a0a0a] rounded-2xl p-4 shadow-2xl"
+            >
+              <svg className="w-10 h-10 text-indigo-400 drop-shadow-[0_0_15px_rgba(99,102,241,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
               </svg>
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
+            initial={{ opacity: 0, y: 30, filter: "blur(10px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.8, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 mb-6"
           >
             Local-first voice typing. <br/> Built for Windows.
           </motion.h1>
           
           <motion.p 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
             className="text-lg md:text-xl text-gray-400 max-w-2xl mb-12 font-medium leading-relaxed"
           >
             The ultimate Rust-powered AI desktop assistant. Speak naturally and process everything entirely on your machine.
           </motion.p>
           
           <motion.div 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 w-full justify-center"
           >
-              <a href="https://github.com/Rukutodo/Voxa/releases/latest" className="group px-7 py-3.5 bg-white text-black hover:bg-gray-100 rounded-full font-semibold text-sm transition-all shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2">
+              <motion.a 
+                whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                href="https://github.com/Rukutodo/Voxa/releases/latest" 
+                className="group px-7 py-3.5 bg-white text-black hover:bg-gray-100 rounded-full font-semibold text-sm transition-colors shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2"
+              >
                 Download v1.0.0
-                <svg className="w-4 h-4 text-black/70 group-hover:text-black transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </a>
-              <a href="#about" className="px-7 py-3.5 bg-white/5 hover:bg-white/10 border border-white/10 text-white rounded-full font-medium text-sm transition-all flex items-center justify-center">
+                <motion.svg 
+                  className="w-4 h-4 text-black/70 group-hover:text-black" 
+                  initial={{ x: 0 }} whileHover={{ x: 4 }} transition={{ type: "spring", stiffness: 300 }}
+                  fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </motion.svg>
+              </motion.a>
+              <motion.a 
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.1)" }} whileTap={{ scale: 0.95 }}
+                href="#about" 
+                className="px-7 py-3.5 bg-white/5 border border-white/10 text-white rounded-full font-medium text-sm transition-colors flex items-center justify-center"
+              >
                 Explore Features
-              </a>
+              </motion.a>
           </motion.div>
         </section>
 
         {/* Feature Cards Section */}
         <section className="py-20 px-6 w-full max-w-6xl mx-auto">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <motion.div variants={fadeInUp} className="group p-0.5 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-indigo-500/30 transition-all duration-500">
-                  <div className="bg-[#0a0a0a] h-full p-8 rounded-2xl">
-                    <div className="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-6">
+                <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.2 } }} className="group p-0.5 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-indigo-500/50 transition-all duration-300 shadow-lg hover:shadow-indigo-500/10">
+                  <div className="bg-[#0a0a0a] h-full p-8 rounded-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-[50px] group-hover:bg-indigo-500/20 transition-all duration-500" />
+                    <div className="w-10 h-10 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-6 relative z-10">
                       <span className="text-indigo-400 text-lg">⚡</span>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white">Instant Response</h3>
-                    <p className="text-gray-400 leading-relaxed text-sm">By running inference locally via our optimized Rust pipeline, the time from speaking to action is nearly instantaneous.</p>
+                    <h3 className="text-xl font-semibold mb-3 text-white relative z-10">Instant Response</h3>
+                    <p className="text-gray-400 leading-relaxed text-sm relative z-10">By running inference locally via our optimized Rust pipeline, the time from speaking to action is nearly instantaneous.</p>
                   </div>
                 </motion.div>
                 
-                <motion.div variants={fadeInUp} className="group p-0.5 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-blue-500/30 transition-all duration-500">
-                  <div className="bg-[#0a0a0a] h-full p-8 rounded-2xl">
-                    <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6">
+                <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.2 } }} className="group p-0.5 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-blue-500/50 transition-all duration-300 shadow-lg hover:shadow-blue-500/10">
+                  <div className="bg-[#0a0a0a] h-full p-8 rounded-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-[50px] group-hover:bg-blue-500/20 transition-all duration-500" />
+                    <div className="w-10 h-10 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-6 relative z-10">
                       <span className="text-blue-400 text-lg">🎨</span>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white">Sleek Overlay UI</h3>
-                    <p className="text-gray-400 leading-relaxed text-sm">A beautiful, non-intrusive UI that hovers over your desktop. Press a global hotkey, speak your mind, and get back to work.</p>
+                    <h3 className="text-xl font-semibold mb-3 text-white relative z-10">Sleek Overlay UI</h3>
+                    <p className="text-gray-400 leading-relaxed text-sm relative z-10">A beautiful, non-intrusive UI that hovers over your desktop. Press a global hotkey, speak your mind, and get back to work.</p>
                   </div>
                 </motion.div>
                 
-                <motion.div variants={fadeInUp} className="group p-0.5 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-purple-500/30 transition-all duration-500">
-                  <div className="bg-[#0a0a0a] h-full p-8 rounded-2xl">
-                    <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6">
+                <motion.div variants={fadeInUp} whileHover={{ y: -8, transition: { duration: 0.2 } }} className="group p-0.5 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-purple-500/50 transition-all duration-300 shadow-lg hover:shadow-purple-500/10">
+                  <div className="bg-[#0a0a0a] h-full p-8 rounded-2xl relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-[50px] group-hover:bg-purple-500/20 transition-all duration-500" />
+                    <div className="w-10 h-10 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-6 relative z-10">
                       <span className="text-purple-400 text-lg">🔒</span>
                     </div>
-                    <h3 className="text-xl font-semibold mb-3 text-white">100% Privacy</h3>
-                    <p className="text-gray-400 leading-relaxed text-sm">Zero data sent to external servers. Your voice never leaves your machine. Fully open-source and auditable.</p>
+                    <h3 className="text-xl font-semibold mb-3 text-white relative z-10">100% Privacy</h3>
+                    <p className="text-gray-400 leading-relaxed text-sm relative z-10">Zero data sent to external servers. Your voice never leaves your machine. Fully open-source and auditable.</p>
                   </div>
                 </motion.div>
             </motion.div>
@@ -120,8 +161,12 @@ export default function App() {
         <section id="about" className="py-24 px-6 w-full max-w-6xl mx-auto">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
-                <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-3xl bg-[#0a0a0a] border border-white/5 p-10">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px]" />
+                <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-3xl bg-[#0a0a0a] border border-white/5 p-10 group">
+                    <motion.div 
+                      animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} 
+                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                      className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/20 rounded-full blur-[80px]" 
+                    />
                     <h3 className="text-2xl font-semibold mb-4 text-white relative z-10">Powered by Qwen TTS</h3>
                     <p className="text-gray-400 leading-relaxed mb-8 relative z-10">
                         Integrating state-of-the-art audio models, Voxa understands context, nuance, and natural speech patterns better than traditional assistants. 
@@ -137,8 +182,12 @@ export default function App() {
                     </ul>
                 </motion.div>
 
-                <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-3xl bg-[#0a0a0a] border border-white/5 p-10">
-                    <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px]" />
+                <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-3xl bg-[#0a0a0a] border border-white/5 p-10 group">
+                    <motion.div 
+                      animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }} 
+                      transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                      className="absolute top-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full blur-[80px]" 
+                    />
                     <h3 className="text-2xl font-semibold mb-4 text-white relative z-10">Built with Tauri & Rust</h3>
                     <p className="text-gray-400 leading-relaxed mb-8 relative z-10">
                         Electron is heavy. Voxa uses Tauri, leveraging your system's native webview wrapped in an incredibly fast Rust backend. This means it uses a fraction of the RAM while maintaining a fluid web UI.
@@ -165,7 +214,7 @@ export default function App() {
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="space-y-6">
                 
-                <motion.div variants={fadeInUp} className="bg-[#0a0a0a] border border-white/5 rounded-2xl p-8">
+                <motion.div variants={fadeInUp} className="bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-colors duration-300">
                     <h3 className="text-lg font-medium mb-6 text-white border-b border-white/5 pb-4">1. Required Dependencies</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
@@ -187,15 +236,15 @@ export default function App() {
                     </div>
                 </motion.div>
 
-                <motion.div variants={fadeInUp} className="bg-[#0a0a0a] border border-white/5 rounded-2xl p-8">
+                <motion.div variants={fadeInUp} className="bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 hover:border-white/10 transition-colors duration-300">
                     <h3 className="text-lg font-medium mb-6 text-white border-b border-white/5 pb-4">2. Setup Models</h3>
                     <div className="flex flex-col gap-4">
                         <p className="text-sm text-gray-400">Download the model weights directly using the HuggingFace CLI.</p>
-                        <div className="relative group">
+                        <motion.div whileHover={{ scale: 1.01 }} className="relative group">
                           <code className="block bg-black text-gray-300 px-4 py-3 rounded-lg text-sm font-mono border border-white/10 overflow-x-auto select-all whitespace-nowrap">
                             huggingface-cli download Qwen/Qwen-Audio --local-dir ./models
                           </code>
-                        </div>
+                        </motion.div>
                         <p className="text-sm text-gray-400 mt-2">Move these downloaded models into <code className="bg-white/10 px-1.5 py-0.5 rounded font-mono text-white">%APPDATA%\Voxa\models</code>.</p>
                     </div>
                 </motion.div>
