@@ -34,7 +34,7 @@ const VoiceOverlayWidget = () => {
             className="flex items-center justify-center"
           >
             <svg 
-              className={`w-6 h-6 transition-colors duration-300 ${isActive ? 'text-[#7d8cf7] drop-shadow-[0_0_10px_rgba(125,140,247,0.7)]' : 'text-zinc-500'}`} 
+              className={`w-6 h-6 transition-colors duration-300 ${isActive ? 'text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.7)]' : 'text-zinc-500'}`} 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -65,7 +65,7 @@ const VoiceOverlayWidget = () => {
                 ].map((bar, i) => (
                   <motion.div
                     key={i}
-                    className="w-[5px] bg-[#7d8cf7] rounded-full shadow-[0_0_10px_rgba(125,140,247,0.5)]"
+                    className="w-[5px] bg-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.4)]"
                     animate={{
                       height: [bar.min, bar.max, bar.min],
                     }}
@@ -102,7 +102,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-[#000000] text-[#ededed] font-sans selection:bg-indigo-500/30 selection:text-white overflow-hidden antialiased">
+    <div className="relative w-full min-h-screen bg-[#000000] text-[#ededed] font-sans overflow-hidden antialiased">
       
       {/* Rich Animated White & Grey Ethereal Background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-black">
@@ -161,11 +161,11 @@ export default function App() {
         <nav className="fixed top-0 w-full flex justify-between items-center px-8 py-5 bg-black/40 backdrop-blur-2xl border-b border-white/10 z-50">
           <motion.div 
             initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
-            className="flex items-center gap-2.5"
+            className="flex items-center gap-3"
           >
             <motion.div 
               whileHover={{ rotate: 180 }} transition={{ duration: 0.4, ease: "backOut" }}
-              className="w-6 h-6 rounded-none bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.5)] cursor-pointer"
+              className="w-6 h-6 rounded-none bg-white/10 border border-white/20 flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.15)] cursor-pointer"
             >
               <svg className="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
             </motion.div>
@@ -194,6 +194,16 @@ export default function App() {
               <VoiceOverlayWidget />
             </motion.div>
 
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="mt-6 mb-2 inline-flex items-center gap-2 px-3 py-1 bg-white/[0.08] border border-white/20 text-xs font-mono uppercase tracking-widest text-zinc-300"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+              Voxa Voice Engine
+            </motion.div>
+
             <motion.h1 
               initial={{ opacity: 0, y: 30, filter: "blur(10px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} transition={{ duration: 0.8, delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white mb-6 drop-shadow-md leading-[1.15]"
@@ -209,7 +219,7 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.3 }}
               className="text-lg md:text-xl text-gray-200 max-w-2xl mb-12 font-medium leading-relaxed drop-shadow-sm"
             >
-              The local-first voice engine for Windows. Speak naturally. Type at the speed of thought.
+              Voxa is the local-first voice engine for Windows. Speak naturally. Type at the speed of thought.
             </motion.p>
             
             <motion.div 
@@ -243,22 +253,22 @@ export default function App() {
           {/* Feature Cards Section */}
           <section className="py-20 px-6 w-full max-w-6xl mx-auto">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-50px" }} variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <motion.div variants={fadeInUp} whileHover={{ y: -6, transition: { duration: 0.2 } }} className="group p-px rounded-none bg-gradient-to-b from-white/20 to-transparent hover:from-indigo-500/50 transition-all duration-300 shadow-xl border border-white/10">
+                  <motion.div variants={fadeInUp} whileHover={{ y: -6, transition: { duration: 0.2 } }} className="group p-px rounded-none bg-gradient-to-b from-white/20 to-transparent hover:from-white/35 transition-all duration-300 shadow-xl border border-white/10">
                     <div className="bg-[#050505]/60 backdrop-blur-2xl h-full p-8 rounded-none relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/30 blur-[50px] group-hover:bg-indigo-500/50 transition-all duration-500 mix-blend-screen" />
-                      <div className="w-10 h-10 rounded-none bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(99,102,241,0.4)]">
-                        <span className="text-indigo-400 text-lg drop-shadow-md">⚡</span>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 blur-[50px] group-hover:bg-white/20 transition-all duration-500 mix-blend-screen" />
+                      <div className="w-10 h-10 rounded-none bg-white/10 border border-white/20 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                       </div>
                       <h3 className="text-xl font-bold mb-3 text-white relative z-10">Instant Response</h3>
                       <p className="text-gray-200 leading-relaxed text-sm relative z-10">By running inference locally via our optimized Rust pipeline, the time from speaking to action is nearly instantaneous.</p>
                     </div>
                   </motion.div>
                   
-                  <motion.div variants={fadeInUp} whileHover={{ y: -6, transition: { duration: 0.2 } }} className="group p-px rounded-none bg-gradient-to-b from-white/20 to-transparent hover:from-blue-500/50 transition-all duration-300 shadow-xl border border-white/10">
+                  <motion.div variants={fadeInUp} whileHover={{ y: -6, transition: { duration: 0.2 } }} className="group p-px rounded-none bg-gradient-to-b from-white/20 to-transparent hover:from-white/35 transition-all duration-300 shadow-xl border border-white/10">
                     <div className="bg-[#050505]/60 backdrop-blur-2xl h-full p-8 rounded-none relative overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/30 blur-[50px] group-hover:bg-blue-500/50 transition-all duration-500 mix-blend-screen" />
-                      <div className="w-10 h-10 rounded-none bg-blue-500/20 border border-blue-500/40 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(59,130,246,0.4)]">
-                        <span className="text-blue-400 text-lg drop-shadow-md">🎨</span>
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-zinc-400/15 blur-[50px] group-hover:bg-zinc-400/25 transition-all duration-500 mix-blend-screen" />
+                      <div className="w-10 h-10 rounded-none bg-white/10 border border-white/20 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(255,255,255,0.15)]">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                       </div>
                       <h3 className="text-xl font-bold mb-3 text-white relative z-10">Sleek Overlay UI</h3>
                       <p className="text-gray-200 leading-relaxed text-sm relative z-10">A beautiful, non-intrusive UI that hovers over your desktop. Press a global hotkey, speak your mind, and get back to work.</p>
@@ -269,7 +279,7 @@ export default function App() {
                     <div className="bg-[#050505]/60 backdrop-blur-2xl h-full p-8 rounded-none relative overflow-hidden">
                       <div className="absolute top-0 right-0 w-32 h-32 bg-white/15 blur-[50px] group-hover:bg-white/25 transition-all duration-500 mix-blend-screen" />
                       <div className="w-10 h-10 rounded-none bg-white/10 border border-white/20 flex items-center justify-center mb-6 relative z-10 shadow-[0_0_15px_rgba(255,255,255,0.2)]">
-                        <span className="text-white text-lg drop-shadow-md">🔒</span>
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
                       </div>
                       <h3 className="text-xl font-bold mb-3 text-white relative z-10">100% Privacy</h3>
                       <p className="text-gray-200 leading-relaxed text-sm relative z-10">Zero data sent to external servers. Your voice never leaves your machine. Fully open-source and auditable.</p>
@@ -284,9 +294,9 @@ export default function App() {
                   
                   <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-none bg-[#050505]/40 backdrop-blur-2xl border border-white/20 p-10 group shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
                       <motion.div 
-                        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }} 
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }} 
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-[-20%] right-[-20%] w-[120%] h-[120%] bg-indigo-500/20 rounded-full blur-[80px] pointer-events-none mix-blend-screen" 
+                        className="absolute top-[-20%] right-[-20%] w-[120%] h-[120%] bg-white/10 rounded-full blur-[80px] pointer-events-none mix-blend-screen" 
                       />
                       <h3 className="text-2xl font-bold mb-4 text-white relative z-10 drop-shadow-sm">Powered by Qwen TTS</h3>
                       <p className="text-gray-200 leading-relaxed mb-8 relative z-10 font-medium">
@@ -295,19 +305,19 @@ export default function App() {
                       </p>
                       <ul className="space-y-4 text-sm font-bold text-white relative z-10">
                           <li className="flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-none bg-indigo-400 shadow-[0_0_12px_rgba(99,102,241,1)]" /> Ultra-low latency voice synthesis
+                            <div className="w-2 h-2 rounded-none bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]" /> Ultra-low latency voice synthesis
                           </li>
                           <li className="flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-none bg-indigo-400 shadow-[0_0_12px_rgba(99,102,241,1)]" /> Highly accurate real-time transcription
+                            <div className="w-2 h-2 rounded-none bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]" /> Highly accurate real-time transcription
                           </li>
                       </ul>
                   </motion.div>
 
                   <motion.div variants={fadeInUp} className="relative overflow-hidden rounded-none bg-[#050505]/40 backdrop-blur-2xl border border-white/20 p-10 group shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
                       <motion.div 
-                        animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }} 
+                        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }} 
                         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                        className="absolute top-[-20%] left-[-20%] w-[120%] h-[120%] bg-blue-500/20 rounded-full blur-[80px] pointer-events-none mix-blend-screen" 
+                        className="absolute top-[-20%] left-[-20%] w-[120%] h-[120%] bg-zinc-400/15 rounded-full blur-[80px] pointer-events-none mix-blend-screen" 
                       />
                       <h3 className="text-2xl font-bold mb-4 text-white relative z-10 drop-shadow-sm">Built with Tauri & Rust</h3>
                       <p className="text-gray-200 leading-relaxed mb-8 relative z-10 font-medium">
@@ -315,10 +325,10 @@ export default function App() {
                       </p>
                       <ul className="space-y-4 text-sm font-bold text-white relative z-10">
                           <li className="flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-none bg-blue-400 shadow-[0_0_12px_rgba(59,130,246,1)]" /> Minimal memory footprint
+                            <div className="w-2 h-2 rounded-none bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]" /> Minimal memory footprint
                           </li>
                           <li className="flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-none bg-blue-400 shadow-[0_0_12px_rgba(59,130,246,1)]" /> Deep OS integration & hotkeys
+                            <div className="w-2 h-2 rounded-none bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]" /> Deep OS integration & hotkeys
                           </li>
                       </ul>
                   </motion.div>
@@ -339,7 +349,7 @@ export default function App() {
                       <h3 className="text-lg font-bold mb-6 text-white border-b border-white/20 pb-4">1. Required Dependencies</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                           <div>
-                              <h4 className="text-sm font-bold text-indigo-300 mb-3 uppercase tracking-widest">Hardware</h4>
+                              <h4 className="text-sm font-bold text-zinc-300 mb-3 uppercase tracking-widest">Hardware</h4>
                               <ul className="space-y-3 text-gray-200 text-sm">
                                   <li><strong className="text-white">Minimum:</strong> 16GB RAM, Multi-core CPU</li>
                                   <li><strong className="text-white">Recommended:</strong> RTX 3060+ (8GB+ VRAM)</li>
@@ -347,7 +357,7 @@ export default function App() {
                               </ul>
                           </div>
                           <div>
-                              <h4 className="text-sm font-bold text-blue-300 mb-3 uppercase tracking-widest">Software</h4>
+                              <h4 className="text-sm font-bold text-zinc-300 mb-3 uppercase tracking-widest">Software</h4>
                               <ul className="space-y-3 text-gray-200 text-sm">
                                   <li><strong className="text-white">Windows 10 or 11</strong></li>
                                   <li><strong className="text-white">Python 3.10+</strong> (Added to PATH)</li>
