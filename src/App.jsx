@@ -182,7 +182,7 @@ export default function App() {
             </motion.div>
         </section>
 
-        {/* Getting Started / Installation Guide (NEW) */}
+        {/* Getting Started / Installation Guide */}
         <section className="py-20 px-6 w-full max-w-4xl text-left mb-20">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp} className="text-center mb-16">
                 <h2 className="text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 drop-shadow-lg">Getting Started</h2>
@@ -191,33 +191,47 @@ export default function App() {
 
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer} className="space-y-8">
                 
-                {/* Prerequisites */}
+                {/* Hardware & Software Requirements */}
                 <motion.div variants={fadeInUp} className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 p-8 rounded-3xl shadow-2xl">
-                    <h3 className="text-2xl font-bold mb-4 text-white flex items-center gap-3"><span className="text-blue-400">📋</span> Prerequisites</h3>
-                    <ul className="space-y-3 text-gray-300 ml-8 list-disc marker:text-indigo-500">
-                        <li><strong>Windows 10 or 11</strong></li>
-                        <li><strong>Python 3.10+</strong> installed and added to your system PATH.</li>
-                        <li><strong>FFmpeg</strong> installed and added to your system PATH (Required by Whisper).</li>
-                    </ul>
+                    <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-3"><span className="text-blue-400">📋</span> System Requirements</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 className="font-bold text-indigo-300 mb-2 border-b border-gray-800 pb-2">Hardware</h4>
+                            <ul className="space-y-2 text-gray-300 list-disc ml-4 marker:text-indigo-500 text-sm">
+                                <li><strong>Minimum:</strong> 16GB RAM, Modern Multi-core CPU. <i>(TTS will work but generation may take a few seconds).</i></li>
+                                <li><strong>Recommended:</strong> NVIDIA GPU with 8GB+ VRAM (e.g., RTX 3060/4060 or better) for near-instantaneous voice generation without locking up your system.</li>
+                                <li><strong>Storage:</strong> ~10GB of free space.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-cyan-300 mb-2 border-b border-gray-800 pb-2">Software</h4>
+                            <ul className="space-y-2 text-gray-300 list-disc ml-4 marker:text-cyan-500 text-sm">
+                                <li><strong>Windows 10 or 11</strong></li>
+                                <li><strong>Python 3.10+</strong> (Must be added to system PATH).</li>
+                                <li><strong>FFmpeg</strong> (Required for Whisper audio decoding, added to PATH).</li>
+                            </ul>
+                        </div>
+                    </div>
                 </motion.div>
 
                 {/* Downloads */}
                 <motion.div variants={fadeInUp} className="bg-gray-900/60 backdrop-blur-xl border border-gray-700/50 p-8 rounded-3xl shadow-2xl">
                     <h3 className="text-2xl font-bold mb-4 text-white flex items-center gap-3"><span className="text-purple-400">📦</span> Required Downloads</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
                         <div className="bg-gray-950/70 p-5 rounded-xl border border-gray-800 flex flex-col justify-between">
                             <div>
-                                <h4 className="font-bold text-indigo-300 mb-1">VoiceFlow Executable</h4>
-                                <p className="text-sm text-gray-400 mb-4">The main application binary.</p>
+                                <h4 className="font-bold text-indigo-300 mb-1">1. VoiceFlow Executable</h4>
+                                <p className="text-sm text-gray-400 mb-4">The main compiled binary and user interface.</p>
                             </div>
                             <a href="https://github.com/Rukutodo/voiceflow/releases/latest" className="text-sm px-4 py-2 text-center bg-indigo-600 hover:bg-indigo-500 rounded font-semibold text-white inline-block transition-colors">Download v1.0.0</a>
                         </div>
                         <div className="bg-gray-950/70 p-5 rounded-xl border border-gray-800 flex flex-col justify-between">
                             <div>
-                                <h4 className="font-bold text-purple-300 mb-1">Qwen TTS Models</h4>
-                                <p className="text-sm text-gray-400 mb-4">The local AI voice weights for speech generation.</p>
+                                <h4 className="font-bold text-purple-300 mb-1">2. Qwen TTS Models</h4>
+                                <p className="text-sm text-gray-400 mb-3">Download the Qwen-Audio model weights directly from Hugging Face using the CLI.</p>
+                                <code className="block bg-black text-pink-400 px-3 py-2 rounded text-xs font-mono border border-gray-700 mb-4 overflow-x-auto select-all whitespace-nowrap">huggingface-cli download Qwen/Qwen-Audio --local-dir ./models</code>
                             </div>
-                            <a href="#" className="text-sm px-4 py-2 text-center bg-gray-700 hover:bg-gray-600 rounded font-semibold text-white inline-block transition-colors">Download Models</a>
+                            <a href="https://huggingface.co/Qwen" target="_blank" rel="noreferrer" className="text-sm px-4 py-2 text-center bg-gray-700 hover:bg-gray-600 rounded font-semibold text-white inline-block transition-colors">View on Hugging Face</a>
                         </div>
                     </div>
                 </motion.div>
@@ -244,7 +258,7 @@ export default function App() {
                             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-cyan-900/50 border border-cyan-500 flex items-center justify-center text-cyan-400 font-bold text-lg shadow-[0_0_15px_rgba(6,182,212,0.3)]">3</div>
                             <div>
                                 <h4 className="font-bold text-white text-lg mb-1">Configure Models</h4>
-                                <p className="text-sm text-gray-400">Extract the Qwen TTS models and move them into the <code className="bg-gray-950 text-green-400 px-2 py-0.5 rounded text-xs font-mono border border-gray-800">%APPDATA%\VoiceFlow\models</code> directory.</p>
+                                <p className="text-sm text-gray-400">Move your downloaded Qwen TTS models into the <code className="bg-gray-950 text-green-400 px-2 py-0.5 rounded text-xs font-mono border border-gray-800">%APPDATA%\VoiceFlow\models</code> directory.</p>
                             </div>
                         </div>
                         <div className="flex gap-5">
